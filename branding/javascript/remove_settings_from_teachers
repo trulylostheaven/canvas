@@ -1,0 +1,9 @@
+(function () {
+    var isTeacher = $.inArray('teacher', ENV['current_user_roles']) > -1;
+    var isAdmin = $.inArray('admin', ENV['current_user_roles']) > -1;
+    var isRootAdmin = $.inArray('root_admin', ENV['current_user_roles']) > -1;
+
+    if (isTeacher && !isAdmin && !isRootAdmin) {
+        $('head').append('<style>#section-tabs a[title="Settings"] { display: none !important; }</style>');
+    }
+})();
